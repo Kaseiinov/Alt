@@ -14,11 +14,11 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/register")
-    public HttpStatus registerUser(@RequestBody UserDto userDto){
-        userService.save(userDto);
-        return HttpStatus.CREATED;
-    }
+//    @PostMapping("/register")
+//    public HttpStatus registerUser(@RequestBody UserDto userDto){
+//        userService.save(userDto);
+//        return HttpStatus.CREATED;
+//    }
 
     @GetMapping("/user")
     public ResponseEntity<UserDto> getUser(@RequestParam() String email){

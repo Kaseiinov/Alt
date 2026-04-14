@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003 create table authorities
+      author: Islam Kaseiinov
+      changes:
+        - createTable:
+            tableName: AUTHORITIES
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: authority
+                  type: varchar(50)
+
+  - changeSet:
+      id: 003 create table roles
+      author: Islam Kaseiinov
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: role
+                  type: varchar(50)
+              - column:
+                  name: authority_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_authority_id
+                    references: AUTHORITIES(id)
+
+        - createTable:
+            tableName: usr_role
+            columns:
+              - column:
+                  name: usr_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_usr_id_to_roles
+                    references: users(id)
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_role_id_to_usr
+                    references: roles(id)
