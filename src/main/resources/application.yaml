@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Alt
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/altysh
+    username: altysha
+    password: altysh123
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
